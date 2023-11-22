@@ -7,31 +7,36 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useTheme} from '../hooks/useTheme';
-import {textSize, textWeight} from './constants/colorTheme';
+import {textFont, textSize, textWeight} from './constants/colorTheme';
 
-export default function HomeCategory({colors}) {
-  const [activeCategory, setActiveCategory] = useState(0);
+export default function HomeCategory({
+  colors,
+  activeCategory,
+  setActiveCategory,
+}) {
   const categories = [
     'All',
-    'Cappuccino',
-    'Espreesso',
+    'Cappucchino',
+    'Espresso',
     'Americano',
     'Macchiato',
+    'Latte',
   ];
 
   return (
-    <ScrollView horizontal={true}>
+    <ScrollView horizontal={true} overScrollMode="never">
       <View style={{flexDirection: 'row', gap: 15}}>
         {categories.map((category, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => setActiveCategory(index)}>
+            onPress={() => setActiveCategory(category)}
+            style={{paddingHorizontal: 3}}>
             <Text
               style={[
                 styles.categoryText,
                 {
                   color:
-                    activeCategory === index
+                    activeCategory === category
                       ? colors.basicColor
                       : colors.additionalTextColor,
                 },
@@ -48,6 +53,6 @@ export default function HomeCategory({colors}) {
 const styles = StyleSheet.create({
   categoryText: {
     fontSize: textSize.text3,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: textFont.textBold,
   },
 });

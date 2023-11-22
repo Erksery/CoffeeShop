@@ -1,20 +1,18 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useTheme} from '../hooks/useTheme';
-import MenuIcon from 'react-native-vector-icons/Entypo';
-import PersonIcon from 'react-native-vector-icons/Ionicons';
+import LeftIcon from 'react-native-vector-icons/Entypo';
+import HeartIcon from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
-import HomeScreen from '../screens/HomeScreen';
 import {screenPadding} from './constants/paddingConstant';
 
-export default function Header() {
+export default function HeaderCoffeeScreen() {
   const navigation = useNavigation();
   const colors = useTheme();
   return (
-    <View
-      style={[styles.headerContainer, {backgroundColor: colors.background}]}>
+    <View style={styles.headerContainer}>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Setting')}
+        onPress={() => navigation.goBack()}
         style={[
           styles.haaderButton,
           {
@@ -22,7 +20,11 @@ export default function Header() {
             borderColor: colors.borderButtonColor,
           },
         ]}>
-        <MenuIcon name="grid" size={30} color={colors.additionalTextColor} />
+        <LeftIcon
+          name="chevron-small-left"
+          size={30}
+          color={colors.additionalTextColor}
+        />
       </TouchableOpacity>
       <TouchableOpacity
         style={[
@@ -32,11 +34,7 @@ export default function Header() {
             borderColor: colors.borderButtonColor,
           },
         ]}>
-        <PersonIcon
-          name="person"
-          size={22}
-          color={colors.additionalTextColor}
-        />
+        <HeartIcon name="heart" size={22} color={colors.additionalTextColor} />
       </TouchableOpacity>
     </View>
   );
@@ -44,12 +42,17 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   headerContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 90,
     paddingTop: 20,
     paddingHorizontal: screenPadding.homeScreenPading,
+    backgroundColor: 'transparent',
   },
   haaderButton: {
     justifyContent: 'center',
@@ -57,6 +60,5 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
     borderRadius: 10,
-    borderWidth: 1,
   },
 });

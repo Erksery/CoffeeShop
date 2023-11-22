@@ -16,7 +16,7 @@ export const TabNavigation = () => {
   const colors = useTheme();
 
   const focusColor = focused => {
-    return focused ? colors.basicColor : colors.iconColor;
+    return focused ? colors.tabActiveColor : colors.iconColor;
   };
 
   return (
@@ -44,7 +44,7 @@ export const TabNavigation = () => {
           tabBarIcon: ({focused}) => (
             <CartIcon
               name="shopping-cart"
-              size={23}
+              size={21}
               color={focusColor(focused)}
             />
           ),
@@ -55,7 +55,7 @@ export const TabNavigation = () => {
         component={FavoriteScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <HeartIcon name="heart" size={25} color={focusColor(focused)} />
+            <HeartIcon name="heart" size={23} color={focusColor(focused)} />
           ),
         }}
       />
@@ -64,7 +64,7 @@ export const TabNavigation = () => {
         component={HistoryScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <BellIcon name="bell" size={25} color={focusColor(focused)} />
+            <BellIcon name="bell" size={23} color={focusColor(focused)} />
           ),
         }}
       />
