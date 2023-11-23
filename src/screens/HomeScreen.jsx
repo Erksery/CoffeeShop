@@ -103,5 +103,6 @@ const styles = StyleSheet.create({
   },
   beansTitle: {
     fontSize: textSize.text2,
+    fontFamily: 'Poppins-Regular',
   },
 });

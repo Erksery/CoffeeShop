@@ -11,7 +11,12 @@ import {useTheme} from '../hooks/useTheme';
 import LinearGradient from 'react-native-linear-gradient';
 import PlusIcon from 'react-native-vector-icons/Feather';
 import StarIcon from 'react-native-vector-icons/AntDesign';
-import {textFont, textSize, textWeight} from './constants/colorTheme';
+import {
+  coffeeCardStyle,
+  textFont,
+  textSize,
+  textWeight,
+} from './constants/colorTheme';
 import {useNavigation} from '@react-navigation/native';
 
 export default function CoffeeCard(props) {
@@ -19,7 +24,7 @@ export default function CoffeeCard(props) {
   const navigation = useNavigation();
 
   const truncateDescription = str => {
-    const string = str.length >= 12 ? str.substring(0, 11) + '..' : str;
+    const string = str.length >= 10 ? str.substring(0, 9) + '..' : str;
     return string;
   };
 
@@ -28,7 +33,7 @@ export default function CoffeeCard(props) {
       <LinearGradient
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}
-        style={styles.coffeCardStyle}
+        style={styles.coffeeCardStyle}
         colors={[colors.cardGradient1, colors.cardGradient2]}>
         <View>
           <ImageBackground
@@ -51,10 +56,10 @@ export default function CoffeeCard(props) {
           </ImageBackground>
         </View>
         <View>
-          <Text style={{color: colors.textColor, fontSize: textSize.text2}}>
+          <Text style={[styles.coffeeName, {color: colors.textColor}]}>
             {truncateDescription(props.name)}
           </Text>
-          <Text style={{color: colors.textColor, fontSize: textSize.text5}}>
+          <Text style={[styles.coffeeRoasted, {color: colors.textColor}]}>
             {props.roasted}
           </Text>
         </View>
@@ -86,12 +91,20 @@ export default function CoffeeCard(props) {
 }
 
 const styles = StyleSheet.create({
-  coffeCardStyle: {
+  coffeeCardStyle: {
     padding: 13,
     width: 150,
     height: 250,
-    borderRadius: 25,
+    borderRadius: coffeeCardStyle.borderRadiusCard,
     gap: 10,
+  },
+  coffeeName: {
+    fontSize: textSize.text2,
+    fontFamily: 'Poppins-Regular',
+  },
+  coffeeRoasted: {
+    fontSize: textSize.text5,
+    fontFamily: 'Poppins-ExtraLight',
   },
   imageCard: {
     alignItems: 'flex-end',
