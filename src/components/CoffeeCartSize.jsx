@@ -5,11 +5,22 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import {textFont, textSize} from './constants/colorTheme';
 import Icon from 'react-native-vector-icons/Feather';
+import {buttonStyles} from './constants/buttonConstant';
 
-export default function CoffeeCartSize({colors}) {
+export default function CoffeeCartSize({colors, size, price, currency}) {
+  const [countPrice, setCountPrice] = useState(0);
+
+  const handlePlusPrice = () => {
+    setCountPrice(prev => prev + 1);
+  };
+
+  const handleMinusPrice = () => {
+    countPrice != 0 && setCountPrice(prev => prev - 1);
+  };
+
   return (
     <View
       style={{
@@ -20,15 +31,21 @@ export default function CoffeeCartSize({colors}) {
       <View
         style={[styles.coffeeCartSize, {backgroundColor: colors.background}]}>
         <Text style={[styles.coffeeSizeText, {color: colors.textColor}]}>
-          S
+          {size}
         </Text>
       </View>
       <View style={{flexDirection: 'row', gap: 5}}>
-        <Text style={[styles.priceText, {color: colors.basicColor}]}>$</Text>
-        <Text style={[styles.priceText, {color: colors.textColor}]}>4.20</Text>
+        <Text style={[styles.priceText, {color: colors.basicColor}]}>
+          {currency}
+        </Text>
+        <Text style={[styles.priceText, {color: colors.textColor}]}>
+          {price}
+        </Text>
       </View>
       <View style={styles.addCoffeeContainer}>
         <TouchableOpacity
+          onPress={handleMinusPrice}
+          activeOpacity={buttonStyles.touchOpacity}
           style={[styles.addButton, {backgroundColor: colors.basicColor}]}>
           <Icon name="minus" size={22} color={'#FFFFFF'} />
         </TouchableOpacity>
@@ -40,9 +57,11 @@ export default function CoffeeCartSize({colors}) {
               borderColor: colors.basicColor,
             },
           ]}>
-          <Text style={{color: '#FFFFFF'}}>1</Text>
+          <Text style={{color: '#FFFFFF'}}>{countPrice}</Text>
         </View>
         <TouchableOpacity
+          onPress={handlePlusPrice}
+          activeOpacity={buttonStyles.touchOpacity}
           style={[styles.addButton, {backgroundColor: colors.basicColor}]}>
           <Icon name="plus" size={22} color={'#FFFFFF'} />
         </TouchableOpacity>
@@ -57,7 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
     width: 80,
-    borderRadius: 10,
+    borderRadius: buttonStyles.buttonBorderRadius,
   },
   coffeeSizeText: {
     fontSize: textSize.text3,
@@ -68,7 +87,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     padding: 7,
-    borderRadius: 10,
+    borderRadius: buttonStyles.buttonBorderRadius,
   },
   addCoffeeContainer: {
     flexDirection: 'row',
@@ -81,7 +100,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 7,
     width: 50,
-    borderRadius: 10,
+    borderRadius: buttonStyles.buttonBorderRadius,
     borderWidth: 2,
   },
 });

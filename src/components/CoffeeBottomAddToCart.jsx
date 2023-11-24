@@ -3,7 +3,12 @@ import React from 'react';
 import {useTheme} from '../hooks/useTheme';
 import {textFont, textSize} from './constants/colorTheme';
 
-export default function CoffeeBottomAddToCart({props, activeSize}) {
+export default function CoffeeBottomAddToCart({
+  props,
+  activeSize,
+  buttonValue,
+  price,
+}) {
   const colors = useTheme();
   return (
     <View style={[styles.priceContainer, {backgroundColor: colors.background}]}>
@@ -19,13 +24,13 @@ export default function CoffeeBottomAddToCart({props, activeSize}) {
             {props.prices[activeSize].currency}
           </Text>
           <Text style={[styles.priceText, {color: colors.textColor}]}>
-            {props.prices[activeSize].price}
+            {price}
           </Text>
         </View>
       </View>
       <TouchableOpacity
         style={[styles.addButtom, {backgroundColor: colors.basicColor}]}>
-        <Text style={styles.addButtomText}>Add to Cart</Text>
+        <Text style={styles.addButtomText}>{buttonValue}</Text>
       </TouchableOpacity>
     </View>
   );
