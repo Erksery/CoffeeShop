@@ -8,7 +8,7 @@ import CoffeeData from '../data/CoffeData';
 
 export default function CartScreen() {
   const colors = useTheme();
-  const [price, setPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   return (
     <>
       <ScrollView
@@ -16,14 +16,14 @@ export default function CartScreen() {
         overScrollMode="never"
         style={[styles.cartScreen, {backgroundColor: colors.background}]}>
         <View style={{gap: 20, paddingBottom: 100}}>
-          <CoffeeCartCard colors={colors} setPrice={setPrice} />
-          <CoffeeCartCard colors={colors} setPrice={setPrice} />
-          <CoffeeCartCard colors={colors} setPrice={setPrice} />
+          <CoffeeCartCard colors={colors} setTotalPrice={setTotalPrice} />
+          <CoffeeCartCard colors={colors} setTotalPrice={setTotalPrice} />
+          <CoffeeCartCard colors={colors} setTotalPrice={setTotalPrice} />
         </View>
       </ScrollView>
       <CoffeeBottomAddToCart
         props={CoffeeData[5]}
-        price={price}
+        totalPrice={totalPrice}
         activeSize={0}
         buttonValue={'Pay'}
       />

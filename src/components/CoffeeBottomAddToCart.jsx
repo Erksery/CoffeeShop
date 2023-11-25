@@ -7,7 +7,7 @@ export default function CoffeeBottomAddToCart({
   props,
   activeSize,
   buttonValue,
-  price,
+  totalPrice,
 }) {
   const colors = useTheme();
   return (
@@ -24,7 +24,7 @@ export default function CoffeeBottomAddToCart({
             {props.prices[activeSize].currency}
           </Text>
           <Text style={[styles.priceText, {color: colors.textColor}]}>
-            {price}
+            {totalPrice.toFixed(2)}
           </Text>
         </View>
       </View>

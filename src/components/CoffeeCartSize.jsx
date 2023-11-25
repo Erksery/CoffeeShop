@@ -10,11 +10,18 @@ import {textFont, textSize} from './constants/colorTheme';
 import Icon from 'react-native-vector-icons/Feather';
 import {buttonStyles} from './constants/buttonConstant';
 
-export default function CoffeeCartSize({colors, size, price, currency}) {
+export default function CoffeeCartSize({
+  colors,
+  size,
+  price,
+  currency,
+  handleSum,
+}) {
   const [countPrice, setCountPrice] = useState(0);
 
   const handlePlusPrice = () => {
     setCountPrice(prev => prev + 1);
+    handleSum(price);
   };
 
   const handleMinusPrice = () => {

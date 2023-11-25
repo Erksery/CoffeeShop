@@ -1,13 +1,15 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
-import React, {useReducer, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {coffeeCardStyle, textSize} from './constants/colorTheme';
 
 import CoffeeData from '../data/CoffeData';
 import CoffeeCartSize from './CoffeeCartSize';
 
-export default function CoffeeCartCard({colors, setPrice}) {
-  const [generalSumPrice, setGeneralSumPrice] = useState(0);
+export default function CoffeeCartCard({colors, setTotalPrice}) {
+  const handleSum = price => {
+    setTotalPrice(prev => prev + +price);
+  };
 
   return (
     <LinearGradient
@@ -46,14 +48,16 @@ export default function CoffeeCartCard({colors, setPrice}) {
         </View>
       </View>
       <View style={{gap: 10}}>
-        {CoffeeData[5].prices.map(item => (
-          <CoffeeCartSize
-            key={item.id}
-            colors={colors}
-            {...item}
-            setPrice={setPrice}
-          />
-        ))}
+        {CoffeeData[5].prices.map((item, index) => {
+          return (
+            <CoffeeCartSize
+              key={index}
+              colors={colors}
+              {...item}
+              handleSum={handleSum}
+            />
+          );
+        })}
       </View>
     </LinearGradient>
   );
