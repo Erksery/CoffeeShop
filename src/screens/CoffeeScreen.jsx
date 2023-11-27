@@ -63,6 +63,7 @@ export default function CoffeeScreen({route}) {
         </View>
       </ScrollView>
       <CoffeeBottomAddToCart
+        link="Cart"
         props={route.params}
         price={prices[activeSize].price}
         activeSize={activeSize}

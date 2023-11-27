@@ -2,14 +2,18 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useTheme} from '../hooks/useTheme';
 import {textFont, textSize} from './constants/colorTheme';
+import {useNavigation} from '@react-navigation/native';
 
 export default function CoffeeBottomAddToCart({
   props,
   activeSize,
   buttonValue,
-  totalPrice,
+  price,
+  link,
 }) {
   const colors = useTheme();
+  const navigation = useNavigation();
+
   return (
     <View style={[styles.priceContainer, {backgroundColor: colors.background}]}>
       <View style={styles.priceTextContainer}>
@@ -24,11 +28,12 @@ export default function CoffeeBottomAddToCart({
             {props.prices[activeSize].currency}
           </Text>
           <Text style={[styles.priceText, {color: colors.textColor}]}>
-            {totalPrice.toFixed(2)}
+            {(+price).toFixed(2)}
           </Text>
         </View>
       </View>
       <TouchableOpacity
+        onPress={() => navigation.navigate(link)}
         style={[styles.addButtom, {backgroundColor: colors.basicColor}]}>
         <Text style={styles.addButtomText}>{buttonValue}</Text>
       </TouchableOpacity>

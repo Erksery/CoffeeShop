@@ -64,7 +64,7 @@ export default function CoffeeCartSize({
               borderColor: colors.basicColor,
             },
           ]}>
-          <Text style={{color: '#FFFFFF'}}>{countPrice}</Text>
+          <Text style={{color: colors.textColor}}>{countPrice}</Text>
         </View>
         <TouchableOpacity
           onPress={handlePlusPrice}

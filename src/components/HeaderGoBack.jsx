@@ -1,20 +1,19 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useTheme} from '../hooks/useTheme';
-import MenuIcon from 'react-native-vector-icons/Entypo';
-import PersonIcon from 'react-native-vector-icons/Ionicons';
+
+import LeftIcon from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
-import HomeScreen from '../screens/HomeScreen';
 import {screenPadding} from './constants/paddingConstant';
 
-export default function Header() {
+export default function HeaderGoBack() {
   const navigation = useNavigation();
   const colors = useTheme();
   return (
     <View
       style={[styles.headerContainer, {backgroundColor: colors.background}]}>
       <TouchableOpacity
-        onPress={() => navigation.openDrawer()}
+        onPress={() => navigation.goBack()}
         style={[
           styles.haaderButton,
           {
@@ -22,19 +21,9 @@ export default function Header() {
             borderColor: colors.borderButtonColor,
           },
         ]}>
-        <MenuIcon name="grid" size={30} color={colors.additionalTextColor} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[
-          styles.haaderButton,
-          {
-            backgroundColor: colors.elementBackground,
-            borderColor: colors.borderButtonColor,
-          },
-        ]}>
-        <PersonIcon
-          name="person"
-          size={22}
+        <LeftIcon
+          name="chevron-small-left"
+          size={30}
           color={colors.additionalTextColor}
         />
       </TouchableOpacity>

@@ -22,8 +22,9 @@ export default function CartScreen() {
         </View>
       </ScrollView>
       <CoffeeBottomAddToCart
+        link="Payment"
         props={CoffeeData[5]}
-        totalPrice={totalPrice}
+        price={totalPrice}
         activeSize={0}
         buttonValue={'Pay'}
       />

@@ -24,7 +24,10 @@ export default function HomeCategory({
   ];
 
   return (
-    <ScrollView horizontal={true} overScrollMode="never">
+    <ScrollView
+      horizontal={true}
+      overScrollMode="never"
+      showsHorizontalScrollIndicator={false}>
       <View style={{flexDirection: 'row', gap: 15}}>
         {categories.map((category, index) => (
           <TouchableOpacity

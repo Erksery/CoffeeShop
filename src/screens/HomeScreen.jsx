@@ -63,7 +63,10 @@ export default React.memo(function HomeScreen() {
           setActiveCategory={setActiveCategory}
           colors={colors}
         />
-        <ScrollView horizontal={true} overScrollMode="never">
+        <ScrollView
+          horizontal={true}
+          overScrollMode="never"
+          showsHorizontalScrollIndicator={false}>
           <View style={{flexDirection: 'row', gap: 20}}>
             {data.map(coffee => (
               <CoffeeCard key={coffee.id} {...coffee} />
@@ -73,7 +76,10 @@ export default React.memo(function HomeScreen() {
         <Text style={[styles.beansTitle, {color: colors.textColor}]}>
           Coffee beans
         </Text>
-        <ScrollView horizontal={true} overScrollMode="never">
+        <ScrollView
+          horizontal={true}
+          overScrollMode="never"
+          showsHorizontalScrollIndicator={false}>
           <View style={{flexDirection: 'row', gap: 20}}>
             {BeansData.map(beans => (
               <CoffeeCard key={beans.id} {...beans} />

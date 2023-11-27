@@ -8,6 +8,8 @@ import DetailsScreen from '../screens/DetailsScreen';
 import PaymentScreen from '../screens/PaymentScreen';
 import CoffeeScreen from '../screens/CoffeeScreen';
 import HeaderCoffeeScreen from '../components/HeaderCoffeeScreen';
+import DrawerNavigation from './DrawerNavigation';
+import HeaderGoBack from '../components/HeaderGoBack';
 
 export const HomeStackNavigation = () => {
   const Stack = createNativeStackNavigator();
@@ -15,8 +17,8 @@ export const HomeStackNavigation = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        component={TabNavigation}
-        options={{header: () => <Header />}}
+        component={DrawerNavigation}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Coffee"
@@ -25,7 +27,11 @@ export const HomeStackNavigation = () => {
       />
       <Stack.Screen name="Setting" component={SettingScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
-      <Stack.Screen name="Payment" component={PaymentScreen} />
+      <Stack.Screen
+        name="Payment"
+        component={PaymentScreen}
+        options={{header: () => <HeaderGoBack />}}
+      />
     </Stack.Navigator>
   );
 };
