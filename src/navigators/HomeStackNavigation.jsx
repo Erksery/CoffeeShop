@@ -10,9 +10,12 @@ import CoffeeScreen from '../screens/CoffeeScreen';
 import HeaderCoffeeScreen from '../components/HeaderCoffeeScreen';
 import DrawerNavigation from './DrawerNavigation';
 import HeaderGoBack from '../components/HeaderGoBack';
+import GoBackButton from '../components/GoBackButton';
+import {useTheme} from '../hooks/useTheme';
 
 export const HomeStackNavigation = () => {
   const Stack = createNativeStackNavigator();
+  const colors = useTheme();
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -25,12 +28,25 @@ export const HomeStackNavigation = () => {
         component={CoffeeScreen}
         options={{header: () => <HeaderCoffeeScreen />}}
       />
-      <Stack.Screen name="Setting" component={SettingScreen} />
+      <Stack.Screen
+        name="Setting"
+        component={SettingScreen}
+        options={{
+          headerLeft: () => <GoBackButton />,
+          headerStyle: {
+            backgroundColor: colors.background,
+          },
+          headerTitleStyle: {color: colors.textColor},
+          headerShadowVisible: false,
+        }}
+      />
       <Stack.Screen name="Details" component={DetailsScreen} />
       <Stack.Screen
         name="Payment"
         component={PaymentScreen}
-        options={{header: () => <HeaderGoBack />}}
+        options={{
+          header: () => <HeaderGoBack />,
+        }}
       />
     </Stack.Navigator>
   );

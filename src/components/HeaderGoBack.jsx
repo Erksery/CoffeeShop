@@ -5,6 +5,7 @@ import {useTheme} from '../hooks/useTheme';
 import LeftIcon from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 import {screenPadding} from './constants/paddingConstant';
+import GoBackButton from './GoBackButton';
 
 export default function HeaderGoBack() {
   const navigation = useNavigation();
@@ -12,21 +13,7 @@ export default function HeaderGoBack() {
   return (
     <View
       style={[styles.headerContainer, {backgroundColor: colors.background}]}>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={[
-          styles.haaderButton,
-          {
-            backgroundColor: colors.elementBackground,
-            borderColor: colors.borderButtonColor,
-          },
-        ]}>
-        <LeftIcon
-          name="chevron-small-left"
-          size={30}
-          color={colors.additionalTextColor}
-        />
-      </TouchableOpacity>
+      <GoBackButton />
     </View>
   );
 }
@@ -39,13 +26,5 @@ const styles = StyleSheet.create({
     height: 90,
     paddingTop: 20,
     paddingHorizontal: screenPadding.homeScreenPading,
-  },
-  haaderButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 35,
-    height: 35,
-    borderRadius: 10,
-    borderWidth: 1,
   },
 });
