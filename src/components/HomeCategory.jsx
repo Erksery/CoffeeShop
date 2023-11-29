@@ -15,12 +15,12 @@ export default function HomeCategory({
   setActiveCategory,
 }) {
   const categories = [
-    'All',
-    'Cappucchino',
-    'Espresso',
-    'Americano',
-    'Macchiato',
-    'Latte',
+    {title: 'All', value: 0},
+    {title: 'Cappucchino', value: 1},
+    {title: 'Espresso', value: 2},
+    {title: 'Americano', value: 3},
+    {title: 'Macchiato', value: 4},
+    {title: 'Latte', value: 5},
   ];
 
   return (
@@ -32,19 +32,19 @@ export default function HomeCategory({
         {categories.map((category, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => setActiveCategory(category)}
+            onPress={() => setActiveCategory(category.value)}
             style={{paddingHorizontal: 3}}>
             <Text
               style={[
                 styles.categoryText,
                 {
                   color:
-                    activeCategory === category
+                    activeCategory === category.value
                       ? colors.basicColor
                       : colors.additionalTextColor,
                 },
               ]}>
-              {category}
+              {category.title}
             </Text>
           </TouchableOpacity>
         ))}
