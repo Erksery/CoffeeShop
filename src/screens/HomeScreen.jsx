@@ -16,21 +16,15 @@ import CoffeeData from '../data/CoffeData';
 import CoffeeCard from '../components/CoffeeCard';
 import BeansData from '../data/BeansData';
 import {screenPadding} from '../components/constants/paddingConstant';
+import {useFetchCoffeeData} from '../hooks/useFetchCoffeeData';
+import {useFetchBeanData} from '../hooks/useFetchBeanData';
 
 export default React.memo(function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [data, setData] = useState([]);
   const navigation = useNavigation();
   const colors = useTheme();
-
-  useEffect(() => {
-    if (activeCategory != 'All') {
-      const coffeeData = CoffeeData.filter(
-        coffee => coffee.name === activeCategory,
-      );
-      setData(coffeeData);
-    } else setData(CoffeeData);
-  }, [activeCategory]);
+  const {coffeeData} = useFetchCoffeeData();
+  const {beanData} = useFetchBeanData();
 
   return (
     <ScrollView
@@ -68,9 +62,11 @@ export default React.memo(function HomeScreen() {
           overScrollMode="never"
           showsHorizontalScrollIndicator={false}>
           <View style={{flexDirection: 'row', gap: 20}}>
-            {data.map(coffee => (
-              <CoffeeCard key={coffee.id} {...coffee} />
-            ))}
+            {coffeeData &&
+              coffeeData.map(coffee => {
+                console.log(coffee);
+                return <CoffeeCard key={coffee.id} {...coffee} />;
+              })}
           </View>
         </ScrollView>
         <Text style={[styles.beansTitle, {color: colors.textColor}]}>
@@ -81,9 +77,8 @@ export default React.memo(function HomeScreen() {
           overScrollMode="never"
           showsHorizontalScrollIndicator={false}>
           <View style={{flexDirection: 'row', gap: 20}}>
-            {BeansData.map(beans => (
-              <CoffeeCard key={beans.id} {...beans} />
-            ))}
+            {beanData &&
+              beanData.map(beans => <CoffeeCard key={beans.id} {...beans} />)}
           </View>
         </ScrollView>
       </View>

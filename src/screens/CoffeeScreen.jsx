@@ -24,7 +24,7 @@ export default function CoffeeScreen({route}) {
         <View style={{paddingBottom: 80}}>
           <ImageBackground
             style={styles.coffeeImage}
-            source={imagelink_portrait}>
+            source={{uri: imagelink_portrait}}>
             <CoffeeScreenImageInfo props={route.params} />
           </ImageBackground>
           <View style={styles.coffeeDescription}>

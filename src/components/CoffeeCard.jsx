@@ -39,7 +39,7 @@ export default function CoffeeCard(props) {
           <ImageBackground
             style={styles.imageCard}
             imageStyle={{borderRadius: 20}}
-            source={props.imagelink_square}>
+            source={{uri: props.imagelink_square}}>
             <View style={styles.cardRating}>
               <StarIcon name="star" color={colors.basicColor} />
               <Text

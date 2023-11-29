@@ -15,12 +15,17 @@ export default function FavoriteScreen() {
 
   return (
     <ScrollView>
-      <Image
-        style={{width: 100, height: 100}}
-        source={{
-          uri: 'https://i.ibb.co/rwScNX8/americano-pic-1-portrain.png',
-        }}
-      />
+      {coffeeData &&
+        coffeeData.map(coffee => (
+          <ImageBackground
+            key={coffee.id}
+            style={{width: 100, height: 100}}
+            source={{
+              uri: coffee.imagelink_square,
+            }}>
+            <Text>dsadas</Text>
+          </ImageBackground>
+        ))}
     </ScrollView>
   );
 }
