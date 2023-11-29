@@ -29,16 +29,13 @@ export default function CartScreen() {
         overScrollMode="never"
         style={[styles.cartScreen, {backgroundColor: colors.background}]}>
         <View style={{gap: 20, paddingBottom: 100}}>
-          <TouchableOpacity onPress={() => dispatch(addCoffeeCart('1'))}>
-            <Text>Add</Text>
-          </TouchableOpacity>
           {cartData &&
             cartData.map(coffee => (
               <CoffeeCartCard
                 key={coffee.id}
                 colors={colors}
                 setTotalPrice={setTotalPrice}
-                {...coffee}
+                props={coffee}
               />
             ))}
         </View>

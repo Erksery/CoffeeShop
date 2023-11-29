@@ -19,6 +19,7 @@ export default function CoffeeScreen({route}) {
   const colors = useTheme();
   const {
     imagelink_portrait,
+    imagelink_square,
     description,
     prices,
     id,
@@ -28,6 +29,9 @@ export default function CoffeeScreen({route}) {
   } = route.params;
 
   const dispatch = useDispatch();
+  const cartData = useSelector(state => state.coffeeCart.dataCoffeeCart);
+
+  console.log(cartData);
 
   return (
     <>
@@ -83,6 +87,8 @@ export default function CoffeeScreen({route}) {
               name: name,
               special_ingredient: special_ingredient,
               roasted: roasted,
+              imagelink_square: imagelink_square,
+              prices: prices,
             }),
           )
         }
