@@ -1,11 +1,15 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React, {useEffect, useReducer, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {coffeeCardStyle, textSize} from './constants/colorTheme';
+import {useSelector, useDispatch} from 'react-redux';
+import {removeCoffee} from '../store/testSlice';
 
 import CoffeeCartSize from './CoffeeCartSize';
 
-export default function CoffeeCartCard({colors, setTotalPrice, props}) {
+export default function CoffeeCartCard({colors, setTotalPrice, props, index}) {
+  const dispatch = useDispatch();
+
   const handleSum = price => {
     setTotalPrice(prev => prev + +price);
   };
@@ -32,20 +36,21 @@ export default function CoffeeCartCard({colors, setTotalPrice, props}) {
               {props.special_ingredient}
             </Text>
           </View>
-
-          <View
-            style={[
-              styles.coffeeRoasted,
-              {backgroundColor: colors.elementBackground},
-            ]}>
-            <Text
+          <TouchableOpacity onPress={() => dispatch(removeCoffee(index))}>
+            <View
               style={[
-                styles.coffeeRoastedText,
-                {color: colors.additionalTextColor},
+                styles.coffeeRoasted,
+                {backgroundColor: colors.elementBackground},
               ]}>
-              {props.roasted}
-            </Text>
-          </View>
+              <Text
+                style={[
+                  styles.coffeeRoastedText,
+                  {color: colors.additionalTextColor},
+                ]}>
+                {props.roasted}
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
       <View style={{gap: 10}}>

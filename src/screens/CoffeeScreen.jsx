@@ -26,6 +26,7 @@ export default function CoffeeScreen({route}) {
     name,
     special_ingredient,
     roasted,
+    index,
   } = route.params;
 
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ export default function CoffeeScreen({route}) {
               roasted: roasted,
               imagelink_square: imagelink_square,
               prices: prices,
+              index: index,
             }),
           )
         }

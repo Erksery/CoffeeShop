@@ -20,7 +20,6 @@ export default function CartScreen() {
 
   const cartData = useSelector(state => state.coffeeCart.dataCoffeeCart);
   const dispatch = useDispatch();
-  console.log(cartData);
 
   return (
     <>
@@ -30,12 +29,13 @@ export default function CartScreen() {
         style={[styles.cartScreen, {backgroundColor: colors.background}]}>
         <View style={{gap: 20, paddingBottom: 100}}>
           {cartData &&
-            cartData.map(coffee => (
+            cartData.map((coffee, index) => (
               <CoffeeCartCard
                 key={coffee.id}
                 colors={colors}
                 setTotalPrice={setTotalPrice}
                 props={coffee}
+                index={index}
               />
             ))}
         </View>
