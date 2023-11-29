@@ -64,7 +64,12 @@ export default React.memo(function HomeScreen() {
       style={[styles.backgroundView, {backgroundColor: colors.background}]}
       overScrollMode="never"
       refreshControl={
-        <RefreshControl onRefresh={refreshCoffeeData} refreshing={isLoading} />
+        <RefreshControl
+          onRefresh={refreshCoffeeData}
+          refreshing={isLoading}
+          colors={[colors.textColor]}
+          progressBackgroundColor={colors.elementBackground}
+        />
       }>
       <StatusBar
         translucent={true}

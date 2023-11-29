@@ -10,6 +10,7 @@ export default function CoffeeBottomAddToCart({
   buttonValue,
   price,
   link,
+  onPressButtonAdd,
 }) {
   const colors = useTheme();
   const navigation = useNavigation();
@@ -33,7 +34,10 @@ export default function CoffeeBottomAddToCart({
         </View>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate(link)}
+        onPress={() => {
+          onPressButtonAdd();
+          navigation.navigate(link);
+        }}
         style={[styles.addButtom, {backgroundColor: colors.basicColor}]}>
         <Text style={styles.addButtomText}>{buttonValue}</Text>
       </TouchableOpacity>

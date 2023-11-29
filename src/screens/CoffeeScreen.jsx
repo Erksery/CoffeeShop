@@ -11,11 +11,24 @@ import {useTheme} from '../hooks/useTheme';
 import CoffeeScreenImageInfo from '../components/CoffeeScreenImageInfo';
 import CoffeeSize from '../components/CoffeeSize';
 import CoffeeBottomAddToCart from '../components/CoffeeBottomAddToCart';
+import {useSelector, useDispatch} from 'react-redux';
+import {addCoffeeCart} from '../store/testSlice';
 
 export default function CoffeeScreen({route}) {
   const [activeSize, setActiveSize] = useState(0);
   const colors = useTheme();
-  const {imagelink_portrait, description, prices} = route.params;
+  const {
+    imagelink_portrait,
+    description,
+    prices,
+    id,
+    name,
+    special_ingredient,
+    roasted,
+  } = route.params;
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <ScrollView
@@ -63,6 +76,16 @@ export default function CoffeeScreen({route}) {
         </View>
       </ScrollView>
       <CoffeeBottomAddToCart
+        onPressButtonAdd={() =>
+          dispatch(
+            addCoffeeCart({
+              id: id,
+              name: name,
+              special_ingredient: special_ingredient,
+              roasted: roasted,
+            }),
+          )
+        }
         link="Cart"
         props={route.params}
         price={prices[activeSize].price}

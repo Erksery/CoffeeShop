@@ -3,13 +3,14 @@ import React, {useEffect, useReducer, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {coffeeCardStyle, textSize} from './constants/colorTheme';
 
-import CoffeeData from '../data/CoffeData';
 import CoffeeCartSize from './CoffeeCartSize';
 
-export default function CoffeeCartCard({colors, setTotalPrice}) {
+export default function CoffeeCartCard({colors, setTotalPrice, props}) {
   const handleSum = price => {
     setTotalPrice(prev => prev + +price);
   };
+
+  console.log(props);
 
   return (
     <LinearGradient
@@ -20,15 +21,15 @@ export default function CoffeeCartCard({colors, setTotalPrice}) {
       <View style={styles.coffeeInfo}>
         <Image
           style={styles.imageCoffeeCartCard}
-          source={CoffeeData[5].imagelink_square}
+          source={{uri: props.imagelink_square}}
         />
         <View style={{justifyContent: 'space-between'}}>
           <View>
             <Text style={[styles.coffeeName, {color: colors.textColor}]}>
-              {CoffeeData[5].name}
+              {props.name}
             </Text>
             <Text style={styles.textIngredient}>
-              {CoffeeData[5].special_ingredient}
+              {props.special_ingredient}
             </Text>
           </View>
 
@@ -42,13 +43,13 @@ export default function CoffeeCartCard({colors, setTotalPrice}) {
                 styles.coffeeRoastedText,
                 {color: colors.additionalTextColor},
               ]}>
-              {CoffeeData[5].roasted}
+              {props.roasted}
             </Text>
           </View>
         </View>
       </View>
       <View style={{gap: 10}}>
-        {CoffeeData[5].prices.map((item, index) => {
+        {props.prices.map((item, index) => {
           return (
             <CoffeeCartSize
               key={index}

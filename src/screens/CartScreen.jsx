@@ -32,12 +32,19 @@ export default function CartScreen() {
           <TouchableOpacity onPress={() => dispatch(addCoffeeCart('1'))}>
             <Text>Add</Text>
           </TouchableOpacity>
-          <CoffeeCartCard colors={colors} setTotalPrice={setTotalPrice} />
-          <CoffeeCartCard colors={colors} setTotalPrice={setTotalPrice} />
-          <CoffeeCartCard colors={colors} setTotalPrice={setTotalPrice} />
+          {cartData &&
+            cartData.map(coffee => (
+              <CoffeeCartCard
+                key={coffee.id}
+                colors={colors}
+                setTotalPrice={setTotalPrice}
+                {...coffee}
+              />
+            ))}
         </View>
       </ScrollView>
       <CoffeeBottomAddToCart
+        onPressButtonAdd={() => console.log('111')}
         link="Payment"
         props={CoffeeData[5]}
         price={totalPrice}
