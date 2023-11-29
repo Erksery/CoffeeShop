@@ -1,11 +1,27 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  ImageBackground,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
+import {useFetchCoffeeData} from '../hooks/useFetchCoffeeData';
 
 export default function FavoriteScreen() {
+  const {coffeeData} = useFetchCoffeeData();
+
   return (
-    <View>
-      <Text>FavoriteScreen</Text>
-    </View>
+    <ScrollView>
+      <Image
+        style={{width: 100, height: 100}}
+        source={{
+          uri: 'https://ibb.co/NyPmbGD',
+        }}
+      />
+    </ScrollView>
   );
 }
 
