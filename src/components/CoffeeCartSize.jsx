@@ -16,6 +16,7 @@ export default function CoffeeCartSize({
   price,
   currency,
   handleSum,
+  handleMinus,
 }) {
   const [countPrice, setCountPrice] = useState(0);
 
@@ -26,6 +27,7 @@ export default function CoffeeCartSize({
 
   const handleMinusPrice = () => {
     countPrice != 0 && setCountPrice(prev => prev - 1);
+    countPrice != 0 && handleMinus(price);
   };
 
   return (

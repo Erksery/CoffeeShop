@@ -11,15 +11,13 @@ import CoffeeCartCard from '../components/CoffeeCartCard';
 import {screenPadding} from '../components/constants/paddingConstant';
 import CoffeeBottomAddToCart from '../components/CoffeeBottomAddToCart';
 import CoffeeData from '../data/CoffeData';
-import {useSelector, useDispatch} from 'react-redux';
-import {addCoffeeCart} from '../store/testSlice';
+import {useSelector} from 'react-redux';
 
 export default function CartScreen() {
   const colors = useTheme();
   const [totalPrice, setTotalPrice] = useState(0);
 
   const cartData = useSelector(state => state.coffeeCart.dataCoffeeCart);
-  const dispatch = useDispatch();
 
   return (
     <>

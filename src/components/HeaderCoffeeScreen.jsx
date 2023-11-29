@@ -5,8 +5,11 @@ import LeftIcon from 'react-native-vector-icons/Entypo';
 import HeartIcon from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import {screenPadding} from './constants/paddingConstant';
+import {useDispatch} from 'react-redux';
+import {addCoffeeFavorite} from '../store/favotiteSlice';
 
-export default function HeaderCoffeeScreen() {
+export default function HeaderCoffeeScreen({props}) {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const colors = useTheme();
   return (
@@ -27,6 +30,15 @@ export default function HeaderCoffeeScreen() {
         />
       </TouchableOpacity>
       <TouchableOpacity
+        onPress={() =>
+          dispatch(
+            addCoffeeFavorite({
+              id: props.id,
+              name: props.name,
+              description: props.description,
+            }),
+          )
+        }
         style={[
           styles.haaderButton,
           {

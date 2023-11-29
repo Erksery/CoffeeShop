@@ -14,6 +14,10 @@ export default function CoffeeCartCard({colors, setTotalPrice, props, index}) {
     setTotalPrice(prev => prev + +price);
   };
 
+  const handleMinus = price => {
+    setTotalPrice(prev => prev - +price);
+  };
+
   console.log(props);
 
   return (
@@ -61,6 +65,7 @@ export default function CoffeeCartCard({colors, setTotalPrice, props, index}) {
               colors={colors}
               {...item}
               handleSum={handleSum}
+              handleMinus={handleMinus}
             />
           );
         })}

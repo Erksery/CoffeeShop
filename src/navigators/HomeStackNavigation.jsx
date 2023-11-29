@@ -26,7 +26,7 @@ export const HomeStackNavigation = () => {
       <Stack.Screen
         name="Coffee"
         component={CoffeeScreen}
-        options={{header: () => <HeaderCoffeeScreen />}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Setting"
