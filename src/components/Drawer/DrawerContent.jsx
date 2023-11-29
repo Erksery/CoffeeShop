@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   drawerStyle: {
-    paddingTop: 30,
+    paddingTop: 50,
     paddingHorizontal: 10,
     gap: 20,
   },

@@ -36,7 +36,11 @@ export const HomeStackNavigation = () => {
           headerStyle: {
             backgroundColor: colors.background,
           },
-          headerTitleStyle: {color: colors.textColor},
+          headerTitleStyle: {
+            color: colors.textColor,
+            fontFamily: 'Poppins-Medium',
+          },
+          headerTitleAlign: 'center',
           headerShadowVisible: false,
         }}
       />

@@ -63,10 +63,9 @@ export default React.memo(function HomeScreen() {
           showsHorizontalScrollIndicator={false}>
           <View style={{flexDirection: 'row', gap: 20}}>
             {coffeeData &&
-              coffeeData.map(coffee => {
-                console.log(coffee);
-                return <CoffeeCard key={coffee.id} {...coffee} />;
-              })}
+              coffeeData.map(coffee => (
+                <CoffeeCard key={coffee.id} {...coffee} />
+              ))}
           </View>
         </ScrollView>
         <Text style={[styles.beansTitle, {color: colors.textColor}]}>
