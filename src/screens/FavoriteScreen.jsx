@@ -18,7 +18,7 @@ export default function FavoriteScreen() {
       <Image
         style={{width: 100, height: 100}}
         source={{
-          uri: 'https://ibb.co/NyPmbGD',
+          uri: 'https://i.ibb.co/rwScNX8/americano-pic-1-portrain.png',
         }}
       />
     </ScrollView>
