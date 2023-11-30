@@ -6,7 +6,7 @@ import HeartIcon from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import {screenPadding} from './constants/paddingConstant';
 import {useDispatch, useSelector} from 'react-redux';
-import {addCoffeeFavorite, removeCoffeeFavorite} from '../store/favotiteSlice';
+import {addCoffeeFavorite, removeCoffeeFavorite} from '../store/favoriteSlice';
 
 export default function HeaderCoffeeScreen({props}) {
   const [likeActive, setLikeActive] = useState(false);
@@ -32,6 +32,8 @@ export default function HeaderCoffeeScreen({props}) {
         type: props.type,
         ingredients: props.ingredients,
         roasted: props.roasted,
+        prices: props.prices,
+        index: props.index,
         isFavorite: true,
       }),
     );

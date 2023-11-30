@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import {useTheme} from '../hooks/useTheme';
 import {useSelector, useDispatch} from 'react-redux';
-import {addCoffeeFavorite} from '../store/favotiteSlice';
+import {addCoffeeFavorite} from '../store/favoriteSlice';
 import {screenPadding} from '../components/constants/paddingConstant';
 import FavoriteCoffee from '../components/FavoriteCoffee';
 

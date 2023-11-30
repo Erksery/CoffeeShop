@@ -1,10 +1,25 @@
 import {configureStore} from '@reduxjs/toolkit';
 import cartAddSlice from './testSlice';
-import favotiteSlice from './favotiteSlice';
+import favoriteSlice from './favoriteSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const favoriteMiddleware = store => next => async action => {
+  const state = store.getState();
+  await AsyncStorage.setItem(
+    'favorite',
+    JSON.stringify(state.favoriteStore.favoriteCoffeeData),
+  );
+  const getValue = await AsyncStorage.getItem('favorite');
+  const favoriteData = JSON.parse(getValue);
+  console.log(favoriteData);
+  return next(action);
+};
 
 export const store = configureStore({
   reducer: {
     coffeeCart: cartAddSlice,
-    favoriteStore: favotiteSlice,
+    favoriteStore: favoriteSlice,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(favoriteMiddleware),
 });
