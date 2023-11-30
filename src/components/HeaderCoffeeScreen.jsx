@@ -25,6 +25,7 @@ export default function HeaderCoffeeScreen({props}) {
         id: props.id,
         name: props.name,
         imagelink_portrait: props.imagelink_portrait,
+        imagelink_square: props.imagelink_square,
         description: props.description,
         special_ingredient: props.special_ingredient,
         average_rating: props.average_rating,

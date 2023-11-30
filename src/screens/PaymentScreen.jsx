@@ -33,6 +33,7 @@ export default function PaymentScreen() {
         </View>
       </ScrollView>
       <CoffeeBottomAddToCart
+        onPressButtonAdd={() => console.log('111')}
         link="Payment"
         props={CoffeeData[5]}
         price={4.2}

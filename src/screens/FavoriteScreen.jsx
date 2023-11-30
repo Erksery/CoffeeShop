@@ -12,6 +12,7 @@ import {addCoffeeFavorite} from '../store/favoriteSlice';
 import {screenPadding} from '../components/constants/paddingConstant';
 import FavoriteCoffee from '../components/FavoriteCoffee';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ErrorComponent from '../components/ErrorComponent';
 
 export default function FavoriteScreen() {
   const [coffeeFavorite, setCoffeeFavorite] = useState([]);
@@ -28,6 +29,10 @@ export default function FavoriteScreen() {
     getFavoriteData();
     console.log('111', coffeeFavorite);
   }, [data]);
+
+  if (data.length === 0) {
+    return <ErrorComponent />;
+  }
 
   return (
     <ScrollView

@@ -18,10 +18,13 @@ import {
   textWeight,
 } from './constants/colorTheme';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {addCoffeeCart} from '../store/testSlice';
 
 export default function CoffeeCard(props) {
   const colors = useTheme();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const truncateDescription = str => {
     const string = str.length >= 10 ? str.substring(0, 9) + '..' : str;
@@ -78,6 +81,19 @@ export default function CoffeeCard(props) {
             </Text>
           </View>
           <TouchableOpacity
+            onPress={() =>
+              dispatch(
+                addCoffeeCart({
+                  id: props.id,
+                  name: props.name,
+                  special_ingredient: props.special_ingredient,
+                  roasted: props.roasted,
+                  imagelink_square: props.imagelink_square,
+                  prices: props.prices,
+                  index: props.index,
+                }),
+              )
+            }
             style={[
               styles.addCartButton,
               {backgroundColor: colors.basicColor},

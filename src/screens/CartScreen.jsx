@@ -12,12 +12,17 @@ import {screenPadding} from '../components/constants/paddingConstant';
 import CoffeeBottomAddToCart from '../components/CoffeeBottomAddToCart';
 import CoffeeData from '../data/CoffeData';
 import {useSelector} from 'react-redux';
+import ErrorComponent from '../components/ErrorComponent';
 
 export default function CartScreen() {
   const colors = useTheme();
   const [totalPrice, setTotalPrice] = useState(0);
 
   const cartData = useSelector(state => state.coffeeCart.dataCoffeeCart);
+
+  if (cartData.length === 0) {
+    return <ErrorComponent />;
+  }
 
   return (
     <>
