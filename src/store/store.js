@@ -9,9 +9,7 @@ const favoriteMiddleware = store => next => async action => {
     'favorite',
     JSON.stringify(state.favoriteStore.favoriteCoffeeData),
   );
-  const getValue = await AsyncStorage.getItem('favorite');
-  const favoriteData = JSON.parse(getValue);
-  console.log(favoriteData);
+
   return next(action);
 };
 

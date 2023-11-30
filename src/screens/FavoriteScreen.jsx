@@ -5,17 +5,29 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTheme} from '../hooks/useTheme';
 import {useSelector, useDispatch} from 'react-redux';
 import {addCoffeeFavorite} from '../store/favoriteSlice';
 import {screenPadding} from '../components/constants/paddingConstant';
 import FavoriteCoffee from '../components/FavoriteCoffee';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function FavoriteScreen() {
+  const [coffeeFavorite, setCoffeeFavorite] = useState([]);
   const dispatch = useDispatch();
   const data = useSelector(state => state.favoriteStore.favoriteCoffeeData);
   const colors = useTheme();
+
+  async function getFavoriteData() {
+    const value = await AsyncStorage.getItem('favorite');
+    setCoffeeFavorite(JSON.parse(value));
+  }
+
+  useEffect(() => {
+    getFavoriteData();
+    console.log('111', coffeeFavorite);
+  }, [data]);
 
   return (
     <ScrollView
