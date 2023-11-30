@@ -12,7 +12,9 @@ export const favoriteSlice = createSlice({
       state.favoriteCoffeeData = [...state.favoriteCoffeeData, action.payload];
     },
     removeCoffeeFavorite: (state, action) => {
-      state.favoriteCoffeeData.splice(action.payload, 1);
+      state.favoriteCoffeeData = state.favoriteCoffeeData.filter(
+        el => el.id !== action.payload.id,
+      );
     },
   },
 });

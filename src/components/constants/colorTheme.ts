@@ -34,6 +34,7 @@ interface Color {
   cardGradient2: string;
   tabActiveColor: string;
   lightGrayColor: string;
+  likeActiveColor: string;
 }
 
 export const textSize: Text = {
@@ -68,6 +69,7 @@ export const lightModeColors: Color = {
   cardGradient2: '#FFFFFF',
   tabActiveColor: '#000000',
   lightGrayColor: '#AEAEAE',
+  likeActiveColor: '#DC3535',
 };
 
 export const darkModeColors: Color = {
@@ -83,6 +85,7 @@ export const darkModeColors: Color = {
   cardGradient2: '#0C0F14',
   tabActiveColor: '#D17842',
   lightGrayColor: '#AEAEAE',
+  likeActiveColor: '#DC3535',
 };
 
 export const coffeeCardStyle = {

@@ -53,7 +53,7 @@ export default function CoffeeScreen({route}) {
           <ImageBackground
             style={styles.coffeeImage}
             source={{uri: imagelink_portrait}}>
-            <CoffeeScreenImageInfo props={route.params} />
+            <CoffeeScreenImageInfo props={route.params} height="30%" />
           </ImageBackground>
           <View style={styles.coffeeDescription}>
             <View style={{gap: 8}}>

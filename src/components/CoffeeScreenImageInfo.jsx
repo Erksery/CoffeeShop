@@ -12,11 +12,11 @@ import DropIcon from 'react-native-vector-icons/FontAwesome6';
 import StarIcon from 'react-native-vector-icons/AntDesign';
 import {useTheme} from '../hooks/useTheme';
 
-export default function CoffeeScreenImageInfo({props}) {
+export default function CoffeeScreenImageInfo({props, height}) {
   const colors = useTheme();
 
   return (
-    <View style={styles.infoImageCoffeeContainer}>
+    <View style={[styles.infoImageCoffeeContainer, {height: height}]}>
       <View style={styles.infoCoffee}>
         <View style={{justifyContent: 'space-between'}}>
           <View>
@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
 
   infoImageCoffeeContainer: {
     padding: 25,
-    height: '30%',
     gap: 20,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
