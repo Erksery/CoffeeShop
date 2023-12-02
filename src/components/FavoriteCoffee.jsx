@@ -13,7 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 export default function FavoriteCoffee(props) {
   const navigation = useNavigation();
   const truncateDescription = str => {
-    if (str.length >= 200) return str.substring(0, 200) + '...';
+    if (str.length >= 120) return str.substring(0, 120) + '...';
     else str;
   };
 

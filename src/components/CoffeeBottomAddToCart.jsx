@@ -5,7 +5,6 @@ import {textFont, textSize} from './constants/colorTheme';
 import {useNavigation} from '@react-navigation/native';
 
 export default function CoffeeBottomAddToCart({
-  props,
   activeSize,
   buttonValue,
   price,
@@ -26,7 +25,7 @@ export default function CoffeeBottomAddToCart({
               fontSize: textSize.text2i5,
               fontWeight: 'bold',
             }}>
-            {props.prices[activeSize].currency}
+            $
           </Text>
           <Text style={[styles.priceText, {color: colors.textColor}]}>
             {(+price).toFixed(2)}

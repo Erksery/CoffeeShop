@@ -10,7 +10,6 @@ import {useTheme} from '../hooks/useTheme';
 import CoffeeCartCard from '../components/CoffeeCartCard';
 import {screenPadding} from '../components/constants/paddingConstant';
 import CoffeeBottomAddToCart from '../components/CoffeeBottomAddToCart';
-import CoffeeData from '../data/CoffeData';
 import {useSelector} from 'react-redux';
 import ErrorComponent from '../components/ErrorComponent';
 
@@ -46,7 +45,6 @@ export default function CartScreen() {
       <CoffeeBottomAddToCart
         onPressButtonAdd={() => console.log('111')}
         link="Payment"
-        props={CoffeeData[5]}
         price={totalPrice}
         activeSize={0}
         buttonValue={'Pay'}

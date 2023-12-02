@@ -5,7 +5,6 @@ import {screenPadding} from '../components/constants/paddingConstant';
 import CreditCard from '../components/CreditCard';
 import Wallets from '../components/Wallets';
 import CoffeeBottomAddToCart from '../components/CoffeeBottomAddToCart';
-import CoffeeData from '../data/CoffeData';
 
 export default function PaymentScreen() {
   const wallets = [
@@ -35,7 +34,6 @@ export default function PaymentScreen() {
       <CoffeeBottomAddToCart
         onPressButtonAdd={() => console.log('111')}
         link="Payment"
-        props={CoffeeData[5]}
         price={4.2}
         activeSize={0}
         buttonValue={'Pay'}
