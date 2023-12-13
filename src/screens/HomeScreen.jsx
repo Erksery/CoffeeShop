@@ -18,6 +18,7 @@ import {screenPadding} from '../components/constants/paddingConstant';
 import {useFetchCoffeeData} from '../hooks/useFetchCoffeeData';
 import {useFetchBeanData} from '../hooks/useFetchBeanData';
 import axios from 'axios';
+import SkeletonCoffeeCard from '../components/SkeletonCoffeeCard';
 
 export default React.memo(function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState(0);
@@ -56,6 +57,17 @@ export default React.memo(function HomeScreen() {
     fetchCoffeeData();
   };
 
+  const coffeeDataArray =
+    coffeeData &&
+    coffeeData.map(coffee => <CoffeeCard key={coffee.id} {...coffee} />);
+
+  const beansDataArray =
+    beanData && beanData.map(beans => <CoffeeCard key={beans.id} {...beans} />);
+
+  const skeletonCoffeeArray = new Array(9)
+    .fill(null)
+    .map((_, index) => <SkeletonCoffeeCard key={index} />);
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -78,18 +90,16 @@ export default React.memo(function HomeScreen() {
         <Text style={[styles.titleText, {color: colors.textColor}]}>
           Find the best coffee for you
         </Text>
-        <TextInput
-          placeholderTextColor={colors.additionalTextColor}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Search')}
           style={[
             styles.searchInput,
             {
-              color: colors.textColor,
               backgroundColor: colors.elementBackground,
             },
-          ]}
-          cursorColor={colors.basicColor}
-          placeholder="Find your coffee"
-        />
+          ]}>
+          <Text style={{color: 'gray'}}>Find your coffee</Text>
+        </TouchableOpacity>
         <HomeCategory
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
@@ -100,10 +110,7 @@ export default React.memo(function HomeScreen() {
           overScrollMode="never"
           showsHorizontalScrollIndicator={false}>
           <View style={{flexDirection: 'row', gap: 20}}>
-            {coffeeData &&
-              coffeeData.map(coffee => (
-                <CoffeeCard key={coffee.id} {...coffee} />
-              ))}
+            {!isLoading ? coffeeDataArray : skeletonCoffeeArray}
           </View>
         </ScrollView>
         <Text style={[styles.beansTitle, {color: colors.textColor}]}>
@@ -114,8 +121,7 @@ export default React.memo(function HomeScreen() {
           overScrollMode="never"
           showsHorizontalScrollIndicator={false}>
           <View style={{flexDirection: 'row', gap: 20}}>
-            {beanData &&
-              beanData.map(beans => <CoffeeCard key={beans.id} {...beans} />)}
+            {!isLoading ? beansDataArray : skeletonCoffeeArray}
           </View>
         </ScrollView>
       </View>
@@ -135,6 +141,7 @@ const styles = StyleSheet.create({
     fontSize: textSize.text1,
   },
   searchInput: {
+    justifyContent: 'center',
     height: 45,
     borderRadius: 15,
     paddingHorizontal: 30,

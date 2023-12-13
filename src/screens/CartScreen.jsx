@@ -10,18 +10,22 @@ import {useTheme} from '../hooks/useTheme';
 import CoffeeCartCard from '../components/CoffeeCartCard';
 import {screenPadding} from '../components/constants/paddingConstant';
 import CoffeeBottomAddToCart from '../components/CoffeeBottomAddToCart';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import ErrorComponent from '../components/ErrorComponent';
+import {addPrice} from '../store/priceSlice';
 
 export default function CartScreen() {
   const colors = useTheme();
   const [totalPrice, setTotalPrice] = useState(0);
 
   const cartData = useSelector(state => state.coffeeCart.dataCoffeeCart);
+  const dispatch = useDispatch();
 
   if (cartData.length === 0) {
     return <ErrorComponent />;
   }
+
+
 
   return (
     <>
@@ -43,7 +47,7 @@ export default function CartScreen() {
         </View>
       </ScrollView>
       <CoffeeBottomAddToCart
-        onPressButtonAdd={() => console.log('111')}
+        onPressButtonAdd={() => dispatch(addPrice(totalPrice))}
         link="Payment"
         price={totalPrice}
         activeSize={0}

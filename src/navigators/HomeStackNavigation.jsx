@@ -12,6 +12,7 @@ import DrawerNavigation from './DrawerNavigation';
 import HeaderGoBack from '../components/HeaderGoBack';
 import GoBackButton from '../components/GoBackButton';
 import {useTheme} from '../hooks/useTheme';
+import SearchScreen from '../screens/SearchScreen';
 
 export const HomeStackNavigation = () => {
   const Stack = createNativeStackNavigator();
@@ -48,6 +49,13 @@ export const HomeStackNavigation = () => {
       <Stack.Screen
         name="Payment"
         component={PaymentScreen}
+        options={{
+          header: () => <HeaderGoBack />,
+        }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={SearchScreen}
         options={{
           header: () => <HeaderGoBack />,
         }}
