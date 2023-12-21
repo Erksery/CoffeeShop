@@ -106,7 +106,7 @@ export default function HistoryScreen() {
                       $
                     </Text>
                     <Text style={[styles.priceText, {color: colors.textColor}]}>
-                      {payCoffeeData.price}
+                      {(+payCoffeeData.price).toFixed(2)}
                     </Text>
                   </View>
                 </View>
